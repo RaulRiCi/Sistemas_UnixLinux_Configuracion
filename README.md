@@ -209,10 +209,16 @@ sudo aptitude install mailutils postfix logwatch
 
 Instala tres paquetes clave:
 
-Mailutils: Un conjunto de herramientas de correo para enviar y leer correos desde la línea de comandos.
-Postfix: Un servidor de correo que gestiona el envío y recepción de correos electrónicos.
-Logwatch: Una herramienta que analiza los registros del sistema y genera informes resumidos o detallados sobre la actividad.
+- Mailutils: Un conjunto de herramientas de correo para enviar y leer correos desde la línea de comandos.
+
+- Postfix: Un servidor de correo que gestiona el envío y recepción de correos electrónicos.
+
+- Logwatch: Una herramienta que analiza los registros del sistema y genera informes resumidos o detallados sobre la actividad.
+
+```apacheconf
 sudo dpkg-reconfigure postfix
+```
+
 Reconfigura Postfix, permitiendo ajustar opciones como el dominio, el tipo de instalación (servidor de Internet, satélite, etc.), y otros detalles de envío de correo.
 
 ```apacheconf
