@@ -34,11 +34,17 @@ Crea una copia de jail.conf con el nombre jail.local. Este archivo (jail.local) 
 sudo nano jail.local
 ```
 
-![jail](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/fail2ban.png?raw=true)
-
-![jail2](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/fail2ban.png?raw=true)
-
+![jail](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/nano%20jail.png?raw=true)
 Abre el archivo jail.local en el editor de texto nano con permisos de superusuario para hacer ajustes. Aquí puedes configurar Fail2Ban, como qué servicios proteger (por ejemplo, SSH) y la duración de los bloqueos.
+
+![jail2](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/nanojail2.png?raw=true)
+
+```apacheconf
+# backend = %(sshd_backend)s
+backend = systemd
+```
+
+backend = systemd En Fail2Ban, la línea backend = systemd especifica el método que Fail2Ban usará para leer los registros del sistema. La opción systemd indica que Fail2Ban obtendrá la información de los registros directamente desde journald (el servicio de registros de systemd). Esto es útil en sistemas modernos que utilizan systemd, ya que permite un monitoreo más eficiente y directo de los servicios.
 
 ```apacheconf
 cd
@@ -139,12 +145,6 @@ sudo freshclam
 ```
 
 Ejecuta manualmente la actualización de la base de datos de virus de ClamAV usando freshclam, en caso de que el servicio no esté activo o para forzar una actualización inmediata.
-
-```apacheconf
-systemctl stop clamav-freshclam.service
-```
-
-Detiene el servicio clamav-freshclam. Puede usarse para realizar actualizaciones manuales o detener el servicio si consume demasiados recursos.
 
 ```apacheconf
 sudo systemctl stop clamav-freshclam.service
