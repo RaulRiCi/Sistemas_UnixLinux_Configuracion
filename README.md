@@ -34,6 +34,10 @@ Crea una copia de jail.conf con el nombre jail.local. Este archivo (jail.local) 
 sudo nano jail.local
 ```
 
+![jail](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/fail2ban.png?raw=true)
+
+![jail2](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/fail2ban.png?raw=true)
+
 Abre el archivo jail.local en el editor de texto nano con permisos de superusuario para hacer ajustes. Aquí puedes configurar Fail2Ban, como qué servicios proteger (por ejemplo, SSH) y la duración de los bloqueos.
 
 ```apacheconf
@@ -49,7 +53,7 @@ sudo systemctl restart fail2ban
 Reinicia el servicio Fail2Ban para aplicar cualquier cambio hecho en el archivo de configuración (jail.local).
 
 ```apacheconf
-systemctl status fail2ban
+sudo systemctl status fail2ban
 ```
 
 Verifica nuevamente el estado de Fail2Ban después del reinicio.
