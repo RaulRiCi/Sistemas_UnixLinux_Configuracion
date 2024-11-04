@@ -164,6 +164,25 @@ sudo nano /etc/cron.daily/clamavscan.sh
 
 Crea o edita el archivo de script clamavscan.sh en el directorio de tareas diarias. Este archivo puede contener instrucciones para realizar un escaneo diario con ClamAV.
 
+![Nclamav](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/nano%20clamav.png?raw=true)
+
+```apacheconf
+#!/bin/bash
+clamscan /home/
+```
+
+```apacheconf
+#!/bin/bash
+```
+
+Indica que el script debe ejecutarse en el intérprete de Bash.
+
+```apacheconf
+clamscan /home/
+```
+
+Ejecuta el comando clamscan, que es la herramienta de escaneo de ClamAV, sobre el directorio /home/. Esto significa que ClamAV analizará todos los archivos y subdirectorios dentro de /home/ en busca de virus y malware. Al finalizar, ClamAV mostrará un resumen con la cantidad de archivos analizados, posibles infecciones y otros detalles.
+
 ```apacheconf
 sudo chmod +x /etc/cron.daily/clamavscan.sh
 ```
@@ -202,6 +221,28 @@ sudo nano /etc/aliases
 
 Abre el archivo /etc/aliases con nano para configurar alias de correo, que redirigen correos enviados a cuentas del sistema (por ejemplo, root) a direcciones de correo reales.
 
+![aliases](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/nano%20aliases.png?raw=true)
+
+```apacheconf
+# See man 5 aliases for format
+postmaster:    root
+root: root,raul.ciriaco13@gmail.com
+```
+
+Estas líneas configuran alias de correo en el archivo /etc/aliases, indicando a qué direcciones deben redirigirse los correos enviados a postmaster y root.
+
+```apacheconf
+postmaster: root
+```
+
+Redirige cualquier correo enviado a postmaster hacia root, que es la cuenta de administrador principal del sistema.
+
+```apacheconf
+root: root,raul.ciriaco13@gmail.com
+```
+
+Envía cualquier correo dirigido a root tanto a la cuenta de root en el sistema como a raul.ciriaco13@gmail.com. Esto asegura que tú, como administrador, recibas copias de todos los mensajes importantes o alertas del sistema en tu correo personal.
+
 ```apacheconf
 sudo newaliases
 ```
@@ -225,6 +266,15 @@ sudo nano /etc/logwatch/conf/logwatch.conf
 ```
 
 Abre el archivo logwatch.conf en nano para ajustar configuraciones, como el nivel de detalle del informe, el rango de tiempo y la dirección de correo a la cual se enviará el informe.
+
+![L](https://github.com/RaulRiCi/Sistemas_UnixLinux_Configuracion/blob/main/capturas/nano%20logwatch.png?raw=true)
+
+```apacheconf
+#Output = stdout
+Output = mail
+```
+
+Output = mail Este cambio en la configuración de Fail2Ban especifica el método de salida de los informes. Al cambiar Output de stdout (salida estándar) a mail, Fail2Ban enviará los informes y alertas por correo en lugar de imprimirlos en la terminal. Esto permite recibir notificaciones por correo electrónico sobre eventos, como intentos fallidos de inicio de sesión, bloqueos de IP, y otras alertas.
 
 ```apacheconf
 sudo logwatch --detail Low --range today
